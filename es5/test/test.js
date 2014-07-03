@@ -13,11 +13,11 @@ chai.use(chaiAsPromised);
 var should = chai.should();
 describe('define dsl test', (function() {
   it('basic test', (function() {
-    var fooHandler = simpleHandler('foo', (function(args) {
+    var fooHandler = simpleHandler('my foo handler', (function(args) {
       args.path.should.equal('/foo');
       return 'foo';
     }), 'void', 'text').done();
-    var barHandler = simpleHandler('bar', (function(args) {
+    var barHandler = simpleHandler('my bar handler', (function(args) {
       args.path.should.equal('/subpath');
       args.id.should.equal('baz');
       args.bazInjected.should.equal('baz');
@@ -27,7 +27,7 @@ describe('define dsl test', (function() {
       args.bazInjected = 'baz';
       return args;
     })).done();
-    var mainRouter = router('main').staticRoute(fooHandler, '/foo').paramRoute(barHandler, '/bar/:id/:restpath').errorFilter((function(err) {
+    var mainRouter = router('my main router').staticRoute(fooHandler, '/foo').paramRoute(barHandler, '/bar/:id/:restpath').errorFilter((function(err) {
       return textToStreamable('error page');
     })).done();
     return loadSimpleHandler({}, mainRouter, 'void', 'text').then((function(handler) {

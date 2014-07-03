@@ -15,7 +15,7 @@ var should = chai.should()
 
 describe('define dsl test', () => {
   it('basic test', () => {
-    var fooHandler = simpleHandler('foo',
+    var fooHandler = simpleHandler('my foo handler',
       args => {
         args.path.should.equal('/foo')
 
@@ -24,7 +24,7 @@ describe('define dsl test', () => {
       .done()
 
     var barHandler = simpleHandler(
-      'bar',
+      'my bar handler',
       args => {
         args.path.should.equal('/subpath')
         args.id.should.equal('baz')
@@ -40,7 +40,7 @@ describe('define dsl test', () => {
       })
       .done()
 
-    var mainRouter = router('main')
+    var mainRouter = router('my main router')
       .staticRoute(fooHandler, '/foo')
       .paramRoute(barHandler, '/bar/:id/:restpath')
       .errorFilter(err => textToStreamable('error page'))

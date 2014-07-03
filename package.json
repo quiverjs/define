@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "traceur": "~0.0.45",
-    "quiver-component": "~1.0.0"
+    "quiver-component": "~1.0.0",
+    "quiver-stream-util": "~1.0.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
